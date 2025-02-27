@@ -71,9 +71,14 @@ noBtn.addEventListener('click', () => {
 
 yesBtn.addEventListener('click', () => {
     message.innerHTML = 'TE AMO MIBIDA';
-    image.src = siii[0];
+    let randomIndex = Math.floor(Math.random() * siii.length);
+    image.src = siii[randomIndex]; // Cambia el GIF de manera aleatoria
     playaduio();
     buttons.style.display = 'none';
+    yesBtn.style.display = 'none';
+
+    lanzarConfeti(); // Activa el confeti
+    lluviaDeCorazones(); // Inicia la lluvia infinita de corazones
 });
 
 function playaduio(){
@@ -81,3 +86,29 @@ function playaduio(){
     audio.volume = 0.3; // Ajusta el volumen entre 0 (silencio) y 1 (máximo)
     audio.play();
 }
+
+function lanzarConfeti() {
+    confetti({
+        particleCount: 150,  // Cantidad de partículas
+        spread: 70,          // Ángulo de dispersión
+        origin: { y: 0.6 }   // Altura desde donde se lanza el confeti
+    });
+}
+
+
+function lluviaDeCorazones() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Entre 3 y 5 segundos
+        document.body.appendChild(heart);
+
+        // Eliminar corazones después de un tiempo para evitar sobrecarga
+        setTimeout(() => {
+            heart.remove();
+        }, 5000); // Se eliminan después de 5 segundos
+    }, 500); // Crea un corazón cada 500ms (0.5s)
+}
+
