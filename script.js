@@ -77,5 +77,7 @@ yesBtn.addEventListener('click', () => {
 });
 
 function playaduio(){
-    document.getElementById("musica").play();
+    let audio = document.getElementById("musica");
+    audio.volume = 0.3; // Ajusta el volumen entre 0 (silencio) y 1 (máximo)
+    audio.play();
 }

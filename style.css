@@ -50,6 +50,7 @@ body {
 
 .no{
     position: relative;
+    transition: left 0.3s ease, top 0.3s ease;
     
 }
 
